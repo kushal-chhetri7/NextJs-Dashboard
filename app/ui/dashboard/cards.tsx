@@ -5,6 +5,8 @@ import {
   InboxIcon,
 } from '@heroicons/react/24/outline';
 import { Inter, Lusitana } from 'next/font/google';
+import { fetchCardData } from '@/app/lib/data';
+
 
 export const inter = Inter({ subsets: ['latin'] });
 export const lusitana = Lusitana({ weight: ['400', '700'], subsets: ['latin'] });
@@ -17,6 +19,12 @@ const iconMap = {
 };
 
 export default async function CardWrapper() {
+    const {
+    numberOfInvoices,
+    numberOfCustomers,
+    totalPaidInvoices,
+    totalPendingInvoices,
+  } = await fetchCardData();
   return (
     <>
       {/* NOTE: Uncomment this code in Chapter 9 */}
